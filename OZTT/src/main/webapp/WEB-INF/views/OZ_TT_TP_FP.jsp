@@ -2,27 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Login</title>
+  <title><fmt:message key="OZ_TT_TP_FP_title"/></title>
   <%@ include file="./commoncssHead.jsp"%>
  
 </head>
 <!-- Head END -->
-<script type="text/javascript">
-
-function login(){
-	var targetForm = document.forms[0];
-	targetForm.action = "${pageContext.request.contextPath}/login/login";
-	targetForm.method = "POST";
-	targetForm.submit();
-}
-
-
-</script>
 
 <!-- Body BEGIN -->
 <body>
@@ -41,32 +31,32 @@ function login(){
 
           <!-- BEGIN CONTENT -->
           <div class="col-md-5 col-sm-5">
-            <h1>忘记密码</h1>
+            <h1><fmt:message key="OZ_TT_TP_FP_h1"/></h1>
             <div class="content-form-page">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
-                  <form:form class="form-horizontal form-without-legend" role="form" id="loginFormDto" modelAttribute="loginFormDto" commandName="loginFormDto">
+                  <form:form class="form-horizontal form-without-legend" role="form" id="OzTtTpFpDto" modelAttribute="OzTtTpFpDto" commandName="OzTtTpFpDto">
                     <div class="form-group">
-                      <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
+                      <label for="password" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_FP_oldpw"/> <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <form:input type="text" path="username" class="form-control" id="email"/>
+                        <form:input type="password" path="oldPassword" class="form-control" id="oldPassword"/>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
+                      <label for="password" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_FP_newpw"/> <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <form:input type="password" path="password" class="form-control" id="password"/>
+                        <form:input type="password" path="newPassword" class="form-control" id="newPassword"/>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
+                      <label for="password" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_FP_conpw"/> <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <form:input type="password" path="password" class="form-control" id="password"/>
+                        <form:input type="password" path="confirmPasswrod" class="form-control" id="confirmPasswrod"/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
-                        <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+                        <button type="button" class="btn btn-primary" onclick="sureChange()"><fmt:message key="OZ_TT_TP_FP_btCon"/></button>
                       </div>
                     </div>
                   </form:form>
@@ -81,6 +71,20 @@ function login(){
     </div>
    
    <%@ include file="./commonjsFooter.jsp"%>
+   
+   <script type="text/javascript">
+	function sureChange() {
+		var targetForm = document.forms[0];
+		targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_FP/changepw";
+		targetForm.method = "POST";
+		targetForm.submit();
+	}
+
+	//这里重新加载画面的高度
+	var viewHeight = window.screen.height ;
+	var offTop = $("#mainDiv").offset().top;
+	$("#mainDiv").height(viewHeight - offTop - 62);
+	</script>
 </body>
 <!-- END BODY -->
 </html>

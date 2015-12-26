@@ -2,22 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Login</title>
+  <title><fmt:message key="OZ_TT_TP_RE_title"/></title>
   <%@ include file="./commoncssHead.jsp"%>
  
 </head>
 <!-- Head END -->
-<script type="text/javascript">
 
-
-
-
-</script>
 
 <!-- Body BEGIN -->
 <body>
@@ -36,75 +32,121 @@
 
           <!-- BEGIN CONTENT -->
           <div class="col-md-9 col-sm-9">
-            <h1>Create an account</h1>
+            <h1><fmt:message key="OZ_TT_TP_RE_h1"/></h1>
             <div class="content-form-page">
               <div class="row">
                 <div class="col-md-7 col-sm-7">
-                  <form class="form-horizontal" role="form">
+                  <form:form class="form-horizontal form-without-legend" role="form" id="OzTtTpReDto" modelAttribute="OzTtTpReDto"
+									commandName="OzTtTpReDto">
                     <fieldset>
-                      <legend>Your personal details</legend>
+                      <legend><fmt:message key="OZ_TT_TP_RE_presonInfo"/></legend>
                       <div class="form-group">
-                        <label for="firstname" class="col-lg-4 control-label">First Name <span class="require">*</span></label>
+                        <label for="firstname" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_surname"/> <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="text" class="form-control" id="firstname">
+                          <form:input type="text" path="cnsurname" class="form-control" id="cnsurname" />
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="lastname" class="col-lg-4 control-label">Last Name <span class="require">*</span></label>
+                        <label for="lastname" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_givenname"/> <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="text" class="form-control" id="lastname">
+                          <form:input type="text" path="cngivenname" class="form-control" id="cngivenname" />
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_firstname"/> <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="text" class="form-control" id="email">
+                          <form:input type="text" path="enfirstname" class="form-control" id="enfirstname" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_middelname"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="enmiddlename" class="form-control" id="enmiddlename" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_lastname"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="enlastname" class="form-control" id="enlastname" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_idcardno"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="idcardno" class="form-control" id="idcardno" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_passportno"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="passportno" class="form-control" id="passportno" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_sex"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="sex" class="form-control" id="sex" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_nickname"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="nickname" class="form-control" id="nickname" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_birthday"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="birthday" class="form-control" id="birthday" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_marriage"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="marriage" class="form-control" id="marriage" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_eduction"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="education" class="form-control" id="education" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_occpation"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="occupation" class="form-control" id="occupation" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_headpic"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="headpic" class="form-control" id="headpic" />
                         </div>
                       </div>
                     </fieldset>
                     <fieldset>
-                      <legend>Your password</legend>
+                      <legend><fmt:message key="OZ_TT_TP_RE_password"/></legend>
                       <div class="form-group">
-                        <label for="password" class="col-lg-4 control-label">Password <span class="require">*</span></label>
+                        <label for="password" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_password"/> <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="text" class="form-control" id="password">
+                          <form:input type="password" path="password" class="form-control" id="password" />
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="confirm-password" class="col-lg-4 control-label">Confirm password <span class="require">*</span></label>
+                        <label for="confirm-password" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_conpassword"/> <span class="require">*</span></label>
                         <div class="col-lg-8">
-                          <input type="text" class="form-control" id="confirm-password">
+                          <form:input type="password" path="conpassword" class="form-control" id="conpassword" />
                         </div>
-                      </div>
-                    </fieldset>
-                    <fieldset>
-                      <legend>Newsletter</legend>
-                      <div class="checkbox form-group">
-                        <label>
-                          <div class="col-lg-4 col-sm-4">Singup for Newsletter</div>
-                          <div class="col-lg-8 col-sm-8">
-                            <input type="checkbox">
-                          </div>
-                        </label>
                       </div>
                     </fieldset>
                     <div class="row">
                       <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">                        
-                        <button type="submit" class="btn btn-primary">Create an acoount</button>
-                        <button type="button" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary" onclick="sureRegister()"><fmt:message key="OZ_TT_TP_RE_btnsure"/></button>
+                        <button type="button" class="btn btn-default" onclick="cancel()"><fmt:message key="OZ_TT_TP_RE_btncancel"/></button>
                       </div>
                     </div>
-                  </form>
-                </div>
-                <div class="col-md-4 col-sm-4 pull-right">
-                  <div class="form-info">
-                    <h2><em>Important</em> Information</h2>
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo quat.</p>
-
-                    <p>Duis autem vel eum iriure at dolor vulputate velit esse vel molestie at dolore.</p>
-
-                    <button type="button" class="btn btn-default">More details</button>
-                  </div>
+                  </form:form>
                 </div>
               </div>
             </div>
@@ -116,6 +158,21 @@
     </div>
    
    <%@ include file="./commonjsFooter.jsp"%>
+   <script type="text/javascript">
+		function sureRegister(){
+			// 确认注册
+			var targetForm = document.forms[0];
+			targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_RE/register";
+			targetForm.method = "POST";
+			targetForm.submit();
+		}
+		
+		function cancel(){
+			// 这里需要访问的是主画面并且确认是不是已经登录
+			
+		}
+		
+	</script>
 </body>
 <!-- END BODY -->
 </html>

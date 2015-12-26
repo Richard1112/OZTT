@@ -1,6 +1,5 @@
 package com.org.oztt.base.dao;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,26 +30,19 @@ public abstract class BaseDao extends SqlSessionDaoSupport {
         super.setSqlSessionTemplate(sqlSession);
     }
 
-    public Integer insert(String statementName, BaseEntity entity) {
-        entity.setCreateTime(new Date());
-        entity.setUpdateTime(new Date());
+    public Integer insert(String statementName, Object entity) {
         return sqlSession.insert(statementName, entity);
     }
 
-    public Integer insertForBatch(String statementName, BaseEntity entity) {
-        entity.setCreateTime(new Date());
-        entity.setUpdateTime(new Date());
+    public Integer insertForBatch(String statementName, Object entity) {
         return sqlSession.insert(statementName, entity);
     }
 
-    public Integer update(String statementName, BaseEntity entity) {
-        if (entity != null) {
-            entity.setUpdateTime(new Date());
-        }
+    public Integer update(String statementName, Object entity) {
         return sqlSession.update(statementName, entity);
     }
 
-    public Integer insertForBbs(String statementName, BaseEntity entity) {
+    public Integer insertForBbs(String statementName, Object entity) {
         return sqlSession.insert(statementName, entity);
     }
 
@@ -62,7 +54,6 @@ public abstract class BaseDao extends SqlSessionDaoSupport {
      * @return
      */
     public Integer updateForConcurrent(String statementName, BaseEntity entity) {
-        entity.setUpdateTime(new Date());
         int updateCount = sqlSession.update(statementName, entity);
         if (updateCount == 0) {
             //throw new DBConcurrencyException(MessageUtils.getText("err.com.db.concurrent"));

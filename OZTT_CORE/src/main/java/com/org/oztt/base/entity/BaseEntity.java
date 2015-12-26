@@ -11,60 +11,53 @@ public class BaseEntity implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
 
-    private Date              createTime;
+    private Date addtimestamp;
 
-    private Integer           createUser;
+    private String adduserkey;
 
-    private Date              updateTime;
+    private Date updtimestamp;
 
-    private Integer           updateUser;
-    
-    private Integer           versionNo;
+    private String upduserkey;
 
-    public BaseEntity()
-    {
-        this.updateTime = new Date();
-    }
+    private String updpgmid;
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public Date getAddtimestamp() {
+		return addtimestamp;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setAddtimestamp(Date addtimestamp) {
+		this.addtimestamp = addtimestamp;
+	}
 
-    public Integer getCreateUser() {
-        return createUser;
-    }
+	public String getAdduserkey() {
+		return adduserkey;
+	}
 
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
-    }
+	public void setAdduserkey(String adduserkey) {
+		this.adduserkey = adduserkey;
+	}
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
+	public Date getUpdtimestamp() {
+		return updtimestamp;
+	}
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+	public void setUpdtimestamp(Date updtimestamp) {
+		this.updtimestamp = updtimestamp;
+	}
 
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
+	public String getUpduserkey() {
+		return upduserkey;
+	}
 
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
+	public void setUpduserkey(String upduserkey) {
+		this.upduserkey = upduserkey;
+	}
 
-    public Integer getVersionNo() {
-        return versionNo;
-    }
+	public String getUpdpgmid() {
+		return updpgmid;
+	}
 
-    public void setVersionNo(Integer versionNo) {
-        this.versionNo = versionNo;
-    }
-    
-
+	public void setUpdpgmid(String updpgmid) {
+		this.updpgmid = updpgmid;
+	}
 }

@@ -12,7 +12,7 @@ public class CycleTestController extends BaseController {
 	
 	@RequestMapping(value = "/Test")
 	public String test() {
-		log.info("hello world,this is a cycle test");
+		logger.info("hello world,this is a cycle test");
 		return "/showPerson";
 	}
 	

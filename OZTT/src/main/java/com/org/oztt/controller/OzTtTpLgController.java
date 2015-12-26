@@ -1,8 +1,5 @@
 package com.org.oztt.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.org.oztt.base.util.PassWordParseInMD5;
 import com.org.oztt.formDto.OzTtTpLgDto;
 
 @Controller
@@ -42,9 +40,8 @@ public class OzTtTpLgController extends BaseController {
 		try {
 			// 进入登录画面
 			String username = loginFormDto.getUsername();
-			String password = loginFormDto.getPassword();
-			//String password = PassWordParseInMD5.Md5(seLgUlBean.getPassword());
-//			EmployeeLogin employeeLogin = userService.userLogin(userId, password);
+			String password = PassWordParseInMD5.Md5(loginFormDto.getPassword());
+//			EmployeeLogin employeeLogin = userService.userLogin(username, password);
 //			if (employeeLogin == null) {
 //				// 没有取到数据,清空密码
 //				seLgUlBean = new SeLgUlBean();
