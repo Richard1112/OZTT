@@ -1,6 +1,6 @@
 package com.org.oztt.contants;
 
-public final class SysCodeContants {
+public final class SysCodeConstants {
 	
 	public static final String SEX_CODE = "COM001";
 	

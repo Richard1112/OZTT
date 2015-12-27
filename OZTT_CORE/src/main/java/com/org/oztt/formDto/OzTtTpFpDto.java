@@ -1,24 +1,26 @@
 package com.org.oztt.formDto;
 
 /**
- * 注册画面
+ * 忘记密码画面以及密码修改确认画面
  * @author linliuan
  *
  */
 public class OzTtTpFpDto {
 
-	private String oldPassword;
+	private String email;
 	
 	private String newPassword;
 	
 	private String confirmPasswrod;
+	
+	private String customerNo;
 
-	public String getOldPassword() {
-		return oldPassword;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setOldPassword(String oldPassword) {
-		this.oldPassword = oldPassword;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getNewPassword() {
@@ -36,5 +38,14 @@ public class OzTtTpFpDto {
 	public void setConfirmPasswrod(String confirmPasswrod) {
 		this.confirmPasswrod = confirmPasswrod;
 	}
+
+	public String getCustomerNo() {
+		return customerNo;
+	}
+
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
+	}
+
 	
 }

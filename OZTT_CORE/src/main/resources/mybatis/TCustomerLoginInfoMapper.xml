@@ -16,100 +16,49 @@
 		<result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		addUserKey, updTimestamp, updUserKey, updPgmId
-		<trim prefix="where" prefixOverrides="and|or">
-			<if test="condition.customerno != null">
-				and customerNo = #{condition.customerno,jdbcType=VARCHAR}
-			</if>
-			<if test="condition.memberno != null">
-				and memberNo = #{condition.memberno,jdbcType=VARCHAR}
-			</if>
-			<if test="condition.loginid != null">
-				and loginId = #{condition.loginid,jdbcType=VARCHAR}
-			</if>
-			<if test="condition.loginpass != null">
-				and loginPass = #{condition.loginpass,jdbcType=VARCHAR}
-			</if>
-			<if test="condition.loginstatus != null">
-				and loginStatus = #{condition.loginstatus,jdbcType=CHAR}
-			</if>
-			<if test="condition.deleteflg != null">
-				and deleteFlg = #{condition.deleteflg,jdbcType=CHAR}
-			</if>
-			<if test="condition.addtimestamp != null">
-				and addTimestamp = #{condition.addtimestamp,jdbcType=TIMESTAMP}
-			</if>
-			<if test="condition.adduserkey != null">
-				and addUserKey = #{condition.adduserkey,jdbcType=VARCHAR}
-			</if>
-			<if test="condition.updtimestamp != null">
-				and updTimestamp = #{condition.updtimestamp,jdbcType=TIMESTAMP}
-			</if>
-			<if test="condition.upduserkey != null">
-				and updUserKey = #{condition.upduserkey,jdbcType=VARCHAR}
-			</if>
-			<if test="condition.updpgmid != null">
-				and updPgmId = #{condition.updpgmid,jdbcType=VARCHAR}
-			</if>
-		</trim>
+		 no
+		,customerNo
+		,memberNo
+		,loginId
+		,loginPass
+		,loginStatus
+		,deleteFlg
+		,addTimestamp
+		,addUserKey
+		,updTimestamp
+		,updUserKey
+		,updPgmId
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Long">
 		<include refid="Base_Column_List" />
 		from t_customer_login_info
 		where no = #{no,jdbcType=BIGINT}
-		<trim prefix="where" prefixOverrides="and|or">
-			<if test="example.condition.customerno != null">
-				and customerNo = #{example.condition.customerno,jdbcType=VARCHAR}
-			</if>
-			<if test="example.condition.memberno != null">
-				and memberNo = #{example.condition.memberno,jdbcType=VARCHAR}
-			</if>
-			<if test="example.condition.loginid != null">
-				and loginId = #{example.condition.loginid,jdbcType=VARCHAR}
-			</if>
-			<if test="example.condition.loginpass != null">
-				and loginPass = #{example.condition.loginpass,jdbcType=VARCHAR}
-			</if>
-			<if test="example.condition.loginstatus != null">
-				and loginStatus = #{example.condition.loginstatus,jdbcType=CHAR}
-			</if>
-			<if test="example.condition.deleteflg != null">
-				and deleteFlg = #{example.condition.deleteflg,jdbcType=CHAR}
-			</if>
-			<if test="example.condition.addtimestamp != null">
-				and addTimestamp = #{example.condition.addtimestamp,jdbcType=TIMESTAMP}
-			</if>
-			<if test="example.condition.adduserkey != null">
-				and addUserKey = #{example.condition.adduserkey,jdbcType=VARCHAR}
-			</if>
-			<if test="example.condition.updtimestamp != null">
-				and updTimestamp = #{example.condition.updtimestamp,jdbcType=TIMESTAMP}
-			</if>
-			<if test="example.condition.upduserkey != null">
-				and updUserKey = #{example.condition.upduserkey,jdbcType=VARCHAR}
-			</if>
-			<if test="example.condition.updpgmid != null">
-				and updPgmId = #{example.condition.updpgmid,jdbcType=VARCHAR}
-			</if>
-		</trim>
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from t_customer_login_info
+		delete from
+		t_customer_login_info
 		where no = #{no,jdbcType=BIGINT}
 	</delete>
 	<insert id="insert" parameterType="com.org.oztt.entity.TCustomerLoginInfo">
-		insert into t_customer_login_info (no, customerNo, memberNo,
-		loginId, loginPass, loginStatus,
+		insert into
+		t_customer_login_info (no, customerNo, memberNo,
+		loginId, loginPass,
+		loginStatus,
 		deleteFlg, addTimestamp, addUserKey,
-		updTimestamp, updUserKey, updPgmId
+		updTimestamp,
+		updUserKey, updPgmId
 		)
-		values (#{no,jdbcType=BIGINT}, #{customerno,jdbcType=VARCHAR},
+		values (#{no,jdbcType=BIGINT},
+		#{customerno,jdbcType=VARCHAR},
 		#{memberno,jdbcType=VARCHAR},
-		#{loginid,jdbcType=VARCHAR}, #{loginpass,jdbcType=VARCHAR}, #{loginstatus,jdbcType=CHAR},
-		#{deleteflg,jdbcType=CHAR}, #{addtimestamp,jdbcType=TIMESTAMP},
+		#{loginid,jdbcType=VARCHAR}, #{loginpass,jdbcType=VARCHAR},
+		#{loginstatus,jdbcType=CHAR},
+		#{deleteflg,jdbcType=CHAR},
+		#{addtimestamp,jdbcType=TIMESTAMP},
 		#{adduserkey,jdbcType=VARCHAR},
-		#{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, #{updpgmid,jdbcType=VARCHAR}
+		#{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR},
+		#{updpgmid,jdbcType=VARCHAR}
 		)
 	</insert>
 	<insert id="insertSelective" parameterType="com.org.oztt.entity.TCustomerLoginInfo">
@@ -231,17 +180,24 @@
 		where no = #{no,jdbcType=BIGINT}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.org.oztt.entity.TCustomerLoginInfo">
-		update t_customer_login_info
+		update
+		t_customer_login_info
 		set customerNo = #{customerno,jdbcType=VARCHAR},
 		memberNo = #{memberno,jdbcType=VARCHAR},
-		loginId = #{loginid,jdbcType=VARCHAR},
+		loginId =
+		#{loginid,jdbcType=VARCHAR},
 		loginPass = #{loginpass,jdbcType=VARCHAR},
 		loginStatus = #{loginstatus,jdbcType=CHAR},
-		deleteFlg = #{deleteflg,jdbcType=CHAR},
-		addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
-		addUserKey = #{adduserkey,jdbcType=VARCHAR},
-		updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
-		updUserKey = #{upduserkey,jdbcType=VARCHAR},
+		deleteFlg =
+		#{deleteflg,jdbcType=CHAR},
+		addTimestamp =
+		#{addtimestamp,jdbcType=TIMESTAMP},
+		addUserKey =
+		#{adduserkey,jdbcType=VARCHAR},
+		updTimestamp =
+		#{updtimestamp,jdbcType=TIMESTAMP},
+		updUserKey =
+		#{upduserkey,jdbcType=VARCHAR},
 		updPgmId = #{updpgmid,jdbcType=VARCHAR}
 		where no = #{no,jdbcType=BIGINT}
 	</update>
@@ -253,6 +209,22 @@
 		from t_customer_login_info
 		where loginId = #{loginid,jdbcType=INTEGER}
 		and loginPass = #{loginpass,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByEmail" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_customer_login_info
+		where loginId = #{email,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByCustomerNo" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_customer_login_info
+		where customerNo = #{customerNo,jdbcType=VARCHAR}
 	</select>
 
 </mapper>

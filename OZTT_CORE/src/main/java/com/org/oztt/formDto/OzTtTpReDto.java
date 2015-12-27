@@ -6,6 +6,8 @@ package com.org.oztt.formDto;
  *
  */
 public class OzTtTpReDto {
+	
+	private String email;
 
 	private String cnsurname;
 
@@ -165,5 +167,13 @@ public class OzTtTpReDto {
 
 	public void setConpassword(String conpassword) {
 		this.conpassword = conpassword;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

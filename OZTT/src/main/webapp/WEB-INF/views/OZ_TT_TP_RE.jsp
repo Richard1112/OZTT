@@ -36,10 +36,16 @@
             <div class="content-form-page">
               <div class="row">
                 <div class="col-md-7 col-sm-7">
-                  <form:form class="form-horizontal form-without-legend" role="form" id="OzTtTpReDto" modelAttribute="OzTtTpReDto"
-									commandName="OzTtTpReDto">
+                  <form:form class="form-horizontal form-without-legend" role="form" id="ozTtTpReDto" modelAttribute="ozTtTpReDto"
+									commandName="ozTtTpReDto">
                     <fieldset>
                       <legend><fmt:message key="OZ_TT_TP_RE_presonInfo"/></legend>
+                      <div class="form-group">
+                        <label for="firstname" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_email"/> <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <form:input type="text" path="email" class="form-control" id="email" />
+                        </div>
+                      </div>
                       <div class="form-group">
                         <label for="firstname" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_RE_surname"/> <span class="require">*</span></label>
                         <div class="col-lg-8">
@@ -142,7 +148,7 @@
                     </fieldset>
                     <div class="row">
                       <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">                        
-                        <button type="submit" class="btn btn-primary" onclick="sureRegister()"><fmt:message key="OZ_TT_TP_RE_btnsure"/></button>
+                        <button type="button" class="btn btn-primary" onclick="sureRegister()"><fmt:message key="OZ_TT_TP_RE_btnsure"/></button>
                         <button type="button" class="btn btn-default" onclick="cancel()"><fmt:message key="OZ_TT_TP_RE_btncancel"/></button>
                       </div>
                     </div>
@@ -161,7 +167,7 @@
    <script type="text/javascript">
 		function sureRegister(){
 			// 确认注册
-			var targetForm = document.forms[0];
+			var targetForm = document.forms['ozTtTpReDto'];
 			targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_RE/register";
 			targetForm.method = "POST";
 			targetForm.submit();

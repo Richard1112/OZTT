@@ -1,5 +1,6 @@
 package com.org.oztt.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,13 +10,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.org.oztt.base.util.PassWordParseInMD5;
+import com.org.oztt.contants.CommonConstants;
+import com.org.oztt.entity.TCustomerLoginHis;
+import com.org.oztt.entity.TCustomerLoginInfo;
 import com.org.oztt.formDto.OzTtTpLgDto;
+import com.org.oztt.service.CustomerService;
 
 @Controller
 @RequestMapping("/OZ_TT_TP_LG")
 public class OzTtTpLgController extends BaseController {
 
+	@Resource
+	private CustomerService customerService;
 	/**
 	 * 登录页
 	 * @param model
@@ -23,7 +29,7 @@ public class OzTtTpLgController extends BaseController {
 	 */
 	@RequestMapping(value = "init", method = RequestMethod.GET)
 	public String gotoMain(Model model) {
-		model.addAttribute("OzTtTpLgDto", new OzTtTpLgDto());
+		model.addAttribute("ozTtTpLgDto", new OzTtTpLgDto());
 		return "/OZ_TT_TP_LG";
 	}
 	
@@ -36,63 +42,44 @@ public class OzTtTpLgController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("login")
-	public String login(Model model, HttpServletRequest request, HttpSession session, @ModelAttribute OzTtTpLgDto loginFormDto) {
+	public String login(Model model, HttpServletRequest request, HttpSession session, @ModelAttribute OzTtTpLgDto ozTtTpLgDto) {
 		try {
 			// 进入登录画面
-			String username = loginFormDto.getUsername();
-			String password = PassWordParseInMD5.Md5(loginFormDto.getPassword());
-//			EmployeeLogin employeeLogin = userService.userLogin(username, password);
-//			if (employeeLogin == null) {
-//				// 没有取到数据,清空密码
-//				seLgUlBean = new SeLgUlBean();
-//				seLgUlBean.setLoginId(userId);
-//				// 错误信息
-//				model.addAttribute("seLgUlBean", seLgUlBean);
-//				model.addAttribute("cannotLogin", "1");
-//				return "SE_LG_UL";
-//			}
-//
-//			// 可以取到数据，将所用的数据放入session 中
-//			session.setAttribute(CodeCommon.SESSION_USERID, userId);
-//			
-//			// 登录成功插入历史记录
-//			if (CodeCommon.HAS_LOGINED_STATUS.equals(employeeLogin
-//					.getLoginStatus())) {
-//				// 用户已经登录着，这时不需要插入历史数据也不需要更新登录表
-//				
-//			} else {
-//				// 插入历史登录数据并且更新登录状态
-//				EmployeeLoginHistroy employeeLoginHistroy = new EmployeeLoginHistroy();
-//				employeeLoginHistroy.setEmployeeNo(userId);
-//				userService.insertLoginHisAndUpdateStatus(employeeLoginHistroy);
-//			}
-//
-//			// 当前用户已经登录, 直接跳转到主菜单画面。
-//			// 这里当用户已经登录的时候，就不需要再插入历史记录了。
-//			
-//			// 这里取出当前用户的权限
-//			EmployeeInfo employeeInfo = employeeManagementService.employeeInfoView(employeeLogin.getEmployeeNo());
-//			SeSyAmAUBean seSyAmAUBean = authorityManagementService.authorityInfoGet(employeeInfo.getDeptCode(), employeeInfo.getRoleCode());
-//			List<String> authorityList = new ArrayList<String>();
-//			// 将所有有权限的放入SESSION中
-//			if (seSyAmAUBean != null && seSyAmAUBean.getBeanList() != null && seSyAmAUBean.getBeanList().size() > 0) {
-//				for (SeSyAmAUListBean listBean : seSyAmAUBean.getBeanList()) {
-//					if (CodeCommon.HAS_AUTHORITY.equals(listBean.getAuthority())) {
-//						authorityList.add(listBean.getControlId());
-//					}
-//				}
-//			}
+			String username = ozTtTpLgDto.getUsername();
+			String password = ozTtTpLgDto.getPassword();
+			TCustomerLoginInfo tCustomerLoginInfo = customerService.userLogin(username, password);
+			if (tCustomerLoginInfo == null) {
+				// 没有取到数据,清空密码
+				ozTtTpLgDto = new OzTtTpLgDto();
+				ozTtTpLgDto.setUsername(username);
+				// 错误信息
+				model.addAttribute("ozTtTpLgDto", new OzTtTpLgDto());
+				model.addAttribute("cannotLogin", "1");
+				return "OZ_TT_TP_LG";
+			}
+
+			// 可以取到数据，将所用的数据放入session 中
+			session.setAttribute(CommonConstants.SESSION_CUSTOMERNO, tCustomerLoginInfo.getCustomerno());
 			
-//			session.setAttribute(CodeCommon.SESSION_ROLEID, employeeInfo.getRoleCode());
-//			if (authorityList.size() > 0) {
-//				session.setAttribute(CodeCommon.SESSION_AUTHORITY_LIST, authorityList);
-//			}
+			// 登录成功插入历史记录
+			if (CommonConstants.HAS_LOGINED_STATUS.equals(tCustomerLoginInfo.getLoginstatus())) {
+				// 用户已经登录着，这时不需要插入历史数据也不需要更新登录表
+				
+			} else {
+				// 插入历史登录数据并且更新登录状态
+				TCustomerLoginHis tCustomerLoginHis = new TCustomerLoginHis();
+				tCustomerLoginHis.setCustomerno(tCustomerLoginInfo.getCustomerno());
+				customerService.insertLoginHisAndUpdateStatus(tCustomerLoginHis);
+			}
+
+			// 当前用户已经登录, 直接跳转到主菜单画面。
+			// 这里当用户已经登录的时候，就不需要再插入历史记录了。
 
 			return "redirect:/main/init";
 		} catch (Exception e) {
-//			logger.error(e.getMessage());
-//			return CodeCommon.COMMON_ERROR_PAGE;
-			return "404";
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return CommonConstants.ERROR_PAGE;
 		}
 		
 	}	

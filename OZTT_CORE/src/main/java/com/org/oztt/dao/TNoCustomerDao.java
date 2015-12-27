@@ -32,4 +32,10 @@ public interface TNoCustomerDao {
      * 根据主键更新记录
      */
     int updateByPrimaryKey(TNoCustomer record);
+    
+    /**
+     * 取得现有数据中最大的客户号
+     * @return
+     */
+    String getMaxCustomerNo();
 }

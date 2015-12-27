@@ -35,8 +35,8 @@
 						<div class="row">
 							<div class="col-md-12 col-sm-12">
 								<form:form class="form-horizontal form-without-legend"
-									role="form" id="OzTtTpLgDto" modelAttribute="OzTtTpLgDto"
-									commandName="OzTtTpLgDto">
+									role="form" id="ozTtTpLgDto" modelAttribute="ozTtTpLgDto" name="ozTtTpLgDto"
+									commandName="ozTtTpLgDto">
 									<div class="form-group">
 										<label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_LG_email"/>
 											<span class="require">*</span>
@@ -81,7 +81,7 @@
 	<%@ include file="./commonjsFooter.jsp"%>
 	<script type="text/javascript">
 	function login() {
-		var targetForm = document.forms[0];
+		var targetForm = document.forms['ozTtTpLgDto'];
 		targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_LG/login";
 		targetForm.method = "POST";
 		targetForm.submit();

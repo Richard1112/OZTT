@@ -1,8 +1,9 @@
 package com.org.oztt.service;
 
-import com.org.oztt.entity.TCustomerBasicInfo;
 import com.org.oztt.entity.TCustomerLoginHis;
 import com.org.oztt.entity.TCustomerLoginInfo;
+import com.org.oztt.formDto.OzTtTpFpDto;
+import com.org.oztt.formDto.OzTtTpReDto;
 
 
 /**
@@ -22,6 +23,18 @@ public interface CustomerService {
 	public boolean loginOut(String userId) throws Exception;
 	
 	// 用户注册用
-	public boolean register(TCustomerBasicInfo info) throws Exception;
+	public boolean insertRegister(OzTtTpReDto ozTtTpReDto) throws Exception;
+	
+	// 取得最新的客户号
+	public String getMaxCustomerNo() throws Exception;
+	
+	// 取得用户
+	public TCustomerLoginInfo selectByEmail(String email) throws Exception;
+	
+	// 取得用户
+	public TCustomerLoginInfo selectByCustomerNo(String customerNo) throws Exception;
+	
+	// 更新密码
+	public boolean updatePassword(OzTtTpFpDto ozTtTpFpDto) throws Exception;
 	
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title><fmt:message key="OZ_TT_TP_FP_title"/></title>
+  <title><fmt:message key="OZ_TT_TP_FP_CO_title"/></title>
   <%@ include file="./commoncssHead.jsp"%>
  
 </head>
@@ -31,25 +31,29 @@
 
           <!-- BEGIN CONTENT -->
           <div class="col-md-5 col-sm-5">
-            <h1><fmt:message key="OZ_TT_TP_FP_h1"/></h1>
+            <h1><fmt:message key="OZ_TT_TP_FP_CO_h1"/></h1>
             <div class="content-form-page">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
-                  <form:form class="form-horizontal form-without-legend"
-									role="form" id="ozTtTpFpDto" modelAttribute="ozTtTpFpDto" name="ozTtTpFpDto"
-									commandName="ozTtTpFpDto">
-                    <p><fmt:message key="OZ_TT_TP_FP_tips"/></p>
+                  <form:form class="form-horizontal form-without-legend" role="form" id="ozTtTpFpDto" modelAttribute="ozTtTpFpDto" commandName="ozTtTpFpDto">
                     <div class="form-group">
-                      <label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_FP_email"/></label>
+                      <label for="password" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_FP_CO_newpw"/> <span class="require">*</span></label>
                       <div class="col-lg-8">
-                        <form:input type="text" path="email" class="form-control" id="email" />
+                        <form:input type="password" path="newPassword" class="form-control" id="newPassword"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="password" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_FP_CO_conpw"/> <span class="require">*</span></label>
+                      <div class="col-lg-8">
+                        <form:input type="password" path="confirmPasswrod" class="form-control" id="confirmPasswrod"/>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-5">
-                        <button type="button" class="btn btn-primary" onclick="sendMail()"><fmt:message key="OZ_TT_TP_FP_btSend"/></button>
+                      <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
+                        <button type="button" class="btn btn-primary" onclick="sureChange()"><fmt:message key="OZ_TT_TP_FP_CO_btsure"/></button>
                       </div>
                     </div>
+                    <form:input type="hidden" path="customerNo" class="form-control" id="customerNo"/>
                   </form:form>
                 </div>
               </div>
@@ -64,15 +68,15 @@
    <%@ include file="./commonjsFooter.jsp"%>
    
    <script type="text/javascript">
-	function sendMail() {
+	function sureChange() {
 		var targetForm = document.forms['ozTtTpFpDto'];
-		targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_FP/sendMail";
+		targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_FP/surechangepw";
 		targetForm.method = "POST";
 		targetForm.submit();
 	}
 
 	//这里重新加载画面的高度
-	var viewHeight = window.screen.height ;
+	var viewHeight = window.screen.height;
 	var offTop = $("#mainDiv").offset().top;
 	$("#mainDiv").height(viewHeight - offTop - 62);
 	</script>

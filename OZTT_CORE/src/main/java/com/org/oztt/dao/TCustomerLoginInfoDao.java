@@ -40,4 +40,18 @@ public interface TCustomerLoginInfoDao {
      * @return
      */
     TCustomerLoginInfo userLogin(TCustomerLoginInfo record);
+    
+    /**
+     * 通过输入邮箱取得用户号
+     * @param email
+     * @return
+     */
+    TCustomerLoginInfo selectByEmail(String email);
+    
+    /**
+     * 通过客户号取得用户号
+     * @param email
+     * @return
+     */
+    TCustomerLoginInfo selectByCustomerNo(String customerNo);
 }
