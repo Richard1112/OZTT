@@ -13,9 +13,7 @@ import com.org.oztt.base.constants.Constants;
 import com.org.oztt.base.page.PagingResult;
 import com.org.oztt.base.respond.JsonResponds;
 import com.org.oztt.base.util.MessageUtils;
-import com.org.oztt.test.domain.Person;
 import com.org.oztt.test.respondDto.RespondPerson;
-import com.org.oztt.test.service.PersonService;
 
 /**
  * 演示以restful为规则的API结构
@@ -32,8 +30,8 @@ import com.org.oztt.test.service.PersonService;
 @RequestMapping("/person")
 public class TestController extends BaseController{
 
-	@Resource
-	private PersonService personService;
+//	@Resource
+//	private PersonService personService;
     /**
      * 获取积分记录信息
      * 
@@ -47,9 +45,9 @@ public class TestController extends BaseController{
             //这里需要验证数据的完整性和token,API的接口check需要严密
         	//TODO
         	RespondPerson rp = new RespondPerson();
-        	PagingResult<Person> pageResult = personService.getPersons(new HashMap<Object, Object>(), null);
-        	// 这里需要对返回值做处理，
-        	rp.setResDtoList(pageResult.getResultList());
+//        	PagingResult<Person> pageResult = personService.getPersons(new HashMap<Object, Object>(), null);
+//        	// 这里需要对返回值做处理，
+//        	rp.setResDtoList(pageResult.getResultList());
             return rp;
         }
         catch (Exception ex) {
