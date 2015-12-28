@@ -1,0 +1,8 @@
+/* 日期格式 */
+.input_date_box {
+	border: 1px solid #bac7d2;
+	width: 167px;
+	line-height: 25px;
+	padding: 4px 7px;
+	outline: none;
+}

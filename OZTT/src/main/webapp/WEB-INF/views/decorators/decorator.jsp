@@ -7,16 +7,25 @@
 <head>
   <meta charset="utf-8">
   <title><sitemesh:write property='title' /></title>
-  <%@ include file="../commoncssHead.jsp"%>
   <sitemesh:write property='head' />
 </head>
 <!-- Head END -->
 <script>
 
-function login(){
-	location.href = "${ctx}/OZ_TT_TP_LG/init";
-}
-
+	var errorHtml = "<span id=\"spanError\" class=\"error\" onmouseover=\"makeMesDiv(this)\" onmouseout=\"removeMesDiv()\"><img src=\"${ctx}/images/error.png\"/></span>";
+	
+	function cleanFormError(){
+		$("#spanError").remove();
+	}
+	
+	function showErrorSpan(obj, msg){
+		$(obj).after(errorHtml);
+		$(obj).next().append(msg);
+	}
+	
+	function login(){
+		location.href = "${pageContext.request.contextPath}/OZ_TT_TP_LG/init";
+	}
 </script>
 
 <!-- Body BEGIN -->
@@ -409,7 +418,7 @@ function login(){
     </div>
     </footer>
     <!-- END FOOTER -->
-    <%@ include file="../commonjsFooter.jsp"%>
+    
 </body>
 <!-- END BODY -->
 </html>

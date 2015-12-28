@@ -16,7 +16,7 @@ public class TCustomerLoginHisDaoImpl extends BaseDao implements
 	}
 
 	public int insert(TCustomerLoginHis record) {
-		return insert("insert", record);
+		return insert("com.org.oztt.dao.TCustomerLoginHisMapper.insert", record);
 	}
 
 	public int insertSelective(TCustomerLoginHis record) {

@@ -7,7 +7,7 @@
     <script src="${ctx}/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
     <script src="${ctx}/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
     <script type="text/javascript" src="${ctx}/assets/plugins/back-to-top.js"></script>
-    <script type="text/javascript" src="${ctx}/assets/plugins/jQuery-slimScroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/plugins/jQuery-slimScroll/jquery.slimscroll.min.js"></script>     
     <!-- END CORE PLUGINS -->
 
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
@@ -25,6 +25,10 @@
 
     <script type="text/javascript" src="${ctx}/assets/scripts/app.js"></script>
     <script type="text/javascript" src="${ctx}/assets/scripts/index.js"></script>
+    <script type="text/javascript" src="${ctx}/js/user-common.js"></script>
+    <script type="text/javascript" src="${ctx}/js/common_validate.js"></script>
+   <script src="${ctx}/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    
     <script type="text/javascript">
         jQuery(document).ready(function() {
             App.init();    

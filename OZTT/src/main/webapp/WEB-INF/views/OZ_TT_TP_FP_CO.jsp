@@ -68,11 +68,37 @@
    <%@ include file="./commonjsFooter.jsp"%>
    
    <script type="text/javascript">
+	var E0002 = '<fmt:message key="E0002" />';
+	var E0004 = '<fmt:message key="E0004" />';
 	function sureChange() {
+		if (!validateForm()) return;
 		var targetForm = document.forms['ozTtTpFpDto'];
 		targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_FP/surechangepw";
 		targetForm.method = "POST";
 		targetForm.submit();
+	}
+	
+	function validateForm(){
+		cleanFormError();
+		var newPassword = $("#newPassword").val();
+		var confirmPasswrod = $("#confirmPasswrod").val();
+		if (newPassword == "") {
+			var message = E0002.replace("{0}", '<fmt:message key="OZ_TT_TP_FP_CO_newpw" />')
+			showErrorSpan($("#newPassword"), message);
+			return false;
+		}
+		if (confirmPasswrod == "") {
+			var message = E0002.replace("{0}", '<fmt:message key="OZ_TT_TP_FP_CO_conpw" />')
+			showErrorSpan($("#confirmPasswrod"), message);
+			return false;
+		}
+		
+		if (newPassword != confirmPasswrod) {
+			showErrorSpan($("#confirmPasswrod"), E0004);
+			return false;
+		}
+		
+		return true;
 	}
 
 	//这里重新加载画面的高度

@@ -53,9 +53,9 @@ public class OzTtTpLgController extends BaseController {
 				ozTtTpLgDto = new OzTtTpLgDto();
 				ozTtTpLgDto.setUsername(username);
 				// 错误信息
-				model.addAttribute("ozTtTpLgDto", new OzTtTpLgDto());
+				model.addAttribute("ozTtTpLgDto", ozTtTpLgDto);
 				model.addAttribute("cannotLogin", "1");
-				return "OZ_TT_TP_LG";
+				return "/OZ_TT_TP_LG";
 			}
 
 			// 可以取到数据，将所用的数据放入session 中
