@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TGoodsPriceMapper" >
+<mapper namespace="com.org.oztt.dao.TGoodsPriceDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TGoodsPrice" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="priceNo" property="priceno" jdbcType="VARCHAR" />
@@ -13,64 +13,14 @@
     <result column="defaultFlg" property="defaultflg" jdbcType="CHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    no, priceNo, goodsId, goodsClassId, goodsClassValue, openFlg, validPeriodStart, validPeriodEnd, 
     defaultFlg
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.priceno != null" >
-         and priceNo = #{condition.priceno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.goodsid != null" >
-         and goodsId = #{condition.goodsid,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.goodsclassid != null" >
-         and goodsClassId = #{condition.goodsclassid,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.goodsclassvalue != null" >
-         and goodsClassValue = #{condition.goodsclassvalue,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.openflg != null" >
-         and openFlg = #{condition.openflg,jdbcType=CHAR}
-      </if>
-      <if test="condition.validperiodstart != null" >
-         and validPeriodStart = #{condition.validperiodstart,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.validperiodend != null" >
-         and validPeriodEnd = #{condition.validperiodend,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.defaultflg != null" >
-         and defaultFlg = #{condition.defaultflg,jdbcType=CHAR}
-      </if>
-    </trim>
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_goods_price
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.priceno != null" >
-         and priceNo = #{example.condition.priceno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.goodsid != null" >
-         and goodsId = #{example.condition.goodsid,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.goodsclassid != null" >
-         and goodsClassId = #{example.condition.goodsclassid,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.goodsclassvalue != null" >
-         and goodsClassValue = #{example.condition.goodsclassvalue,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.openflg != null" >
-         and openFlg = #{example.condition.openflg,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.validperiodstart != null" >
-         and validPeriodStart = #{example.condition.validperiodstart,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.validperiodend != null" >
-         and validPeriodEnd = #{example.condition.validperiodend,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.defaultflg != null" >
-         and defaultFlg = #{example.condition.defaultflg,jdbcType=CHAR}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_goods_price

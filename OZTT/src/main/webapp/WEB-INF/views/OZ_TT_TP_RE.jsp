@@ -10,6 +10,9 @@
   <meta charset="utf-8">
   <title><fmt:message key="OZ_TT_TP_RE_title"/></title>
   <%@ include file="./commoncssHead.jsp"%>
+  <%@ include file="./commonjsFooter.jsp"%>
+  <link href="${ctx }/css/uploadify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src='${ctx }/js/jquery.uploadify.min.js'></script>
 </head>
 <!-- Head END -->
 
@@ -134,6 +137,8 @@
                         	<c:if test='${ ozTtTpReDto.headpic != "" and ozTtTpReDto.headpic != null }'>
 								<img src="${pageContext.request.contextPath}/personalPhoto/${ozTtTpReDto.headpic }" width="140px" height="140px" id='photo1' />
 							</c:if>
+							<input type="file" name="uploadify" id="uploadify"/>
+							<button type="button" class="btn btn-default myselfcancel" onclick="picCancel()"><fmt:message key="common_cancel"/></button>
                         </div>
                       </div>
                     </fieldset>
@@ -158,6 +163,8 @@
                         <button type="button" class="btn btn-default" onclick="cancel()"><fmt:message key="OZ_TT_TP_RE_btncancel"/></button>
                       </div>
                     </div>
+                    
+                    <form:hidden path="headpic"/>
                   </form:form>
                 </div>
               </div>
@@ -169,7 +176,6 @@
       </div>
     </div>
    
-   <%@ include file="./commonjsFooter.jsp"%>
    <script type="text/javascript">
   		var E0004 = '<fmt:message key="E0004" />';
 		var E0002 = '<fmt:message key="E0002" />';
@@ -181,9 +187,34 @@
 		        autoclose: true,
 		        todayHighlight: true
 		    }); 
+		    
+		    $("#uploadify").uploadify({
+				'uploader'         : '${pageContext.request.contextPath}/servlet/Upload?folder=personalPhoto',//+folder,
+				'swf'              : '${pageContext.request.contextPath}/js/uploadify.swf',
+				'folder'           : 'upload',
+				'fileSizeLimit'    : '2MB',
+				'queueID'          : true,
+				'auto'             : true,
+				'multi'            : false,
+				'simUploadLimit'   : 1,
+				'removeCompleted'  : false,
+				'buttonText'       : '上传',
+				'buttonClass'      : 'btn btn-primary',
+				'width'            : 50,
+				'height'           : 35,
+				'fileTypeExts'     : '*.jpg;*.jpeg;*.png',
+				'onSelect': function (file) { },
+				'onUploadSuccess': function (file, data, response) {
+					var newName = data;
+					$("#photo1").attr("src", "${pageContext.request.contextPath}/personalPhoto/"+newName);
+					$("#photo1").css({cursor:'pointer'});
+					$("#headpic").val(newName);
+				},
+			});
 		});
 		function sureRegister(){
 			// 确认注册
+			if (!validateForm()) return;
 			var targetForm = document.forms['ozTtTpReDto'];
 			targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_RE/register";
 			targetForm.method = "POST";
@@ -221,6 +252,13 @@
 		function cancel(){
 			// 这里需要访问的是主画面并且确认是不是已经登录
 			
+		}
+		
+		// 取消图片上传
+		function picCancel(){
+			$("#photo1").attr("src", "${pageContext.request.contextPath}/images/photo_size.png");
+			$("#photo1").css({cursor:'default'});
+			$("#headpic").val("");
 		}
 		
 	</script>

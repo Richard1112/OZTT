@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TSysModuleMapper" >
+<mapper namespace="com.org.oztt.dao.TSysModuleDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TSysModule" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="moduleNo" property="moduleno" jdbcType="VARCHAR" />
@@ -15,76 +15,14 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    no, moduleNo, fatherModuleNo, moduleName, moduleDesc, openFlg, addTimestamp, addUserKey, 
     updTimestamp, updUserKey, updPgmId
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.moduleno != null" >
-         and moduleNo = #{condition.moduleno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.fathermoduleno != null" >
-         and fatherModuleNo = #{condition.fathermoduleno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.modulename != null" >
-         and moduleName = #{condition.modulename,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.moduledesc != null" >
-         and moduleDesc = #{condition.moduledesc,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.openflg != null" >
-         and openFlg = #{condition.openflg,jdbcType=CHAR}
-      </if>
-      <if test="condition.addtimestamp != null" >
-         and addTimestamp = #{condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.adduserkey != null" >
-         and addUserKey = #{condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updtimestamp != null" >
-         and updTimestamp = #{condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.upduserkey != null" >
-         and updUserKey = #{condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updpgmid != null" >
-         and updPgmId = #{condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_sys_module
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.moduleno != null" >
-         and moduleNo = #{example.condition.moduleno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.fathermoduleno != null" >
-         and fatherModuleNo = #{example.condition.fathermoduleno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.modulename != null" >
-         and moduleName = #{example.condition.modulename,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.moduledesc != null" >
-         and moduleDesc = #{example.condition.moduledesc,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.openflg != null" >
-         and openFlg = #{example.condition.openflg,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.addtimestamp != null" >
-         and addTimestamp = #{example.condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.adduserkey != null" >
-         and addUserKey = #{example.condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updtimestamp != null" >
-         and updTimestamp = #{example.condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.upduserkey != null" >
-         and updUserKey = #{example.condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updpgmid != null" >
-         and updPgmId = #{example.condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_sys_module

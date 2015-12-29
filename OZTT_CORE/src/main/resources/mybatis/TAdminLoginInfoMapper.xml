@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TAdminLoginInfoMapper" >
+<mapper namespace="com.org.oztt.dao.TAdminLoginInfoDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TAdminLoginInfo" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="adminNo" property="adminno" jdbcType="VARCHAR" />
@@ -14,70 +14,14 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    no, adminNo, loginPass, loginStatus, deleteFlg, addTimestamp, addUserKey, updTimestamp, 
     updUserKey, updPgmId
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.adminno != null" >
-         and adminNo = #{condition.adminno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.loginpass != null" >
-         and loginPass = #{condition.loginpass,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.loginstatus != null" >
-         and loginStatus = #{condition.loginstatus,jdbcType=CHAR}
-      </if>
-      <if test="condition.deleteflg != null" >
-         and deleteFlg = #{condition.deleteflg,jdbcType=CHAR}
-      </if>
-      <if test="condition.addtimestamp != null" >
-         and addTimestamp = #{condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.adduserkey != null" >
-         and addUserKey = #{condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updtimestamp != null" >
-         and updTimestamp = #{condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.upduserkey != null" >
-         and updUserKey = #{condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updpgmid != null" >
-         and updPgmId = #{condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_admin_login_info
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.adminno != null" >
-         and adminNo = #{example.condition.adminno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.loginpass != null" >
-         and loginPass = #{example.condition.loginpass,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.loginstatus != null" >
-         and loginStatus = #{example.condition.loginstatus,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.deleteflg != null" >
-         and deleteFlg = #{example.condition.deleteflg,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.addtimestamp != null" >
-         and addTimestamp = #{example.condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.adduserkey != null" >
-         and addUserKey = #{example.condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updtimestamp != null" >
-         and updTimestamp = #{example.condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.upduserkey != null" >
-         and updUserKey = #{example.condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updpgmid != null" >
-         and updPgmId = #{example.condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_admin_login_info

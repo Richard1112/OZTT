@@ -104,7 +104,6 @@
 	</aop:config>
 	
 	
-	
 	<bean class="com.org.oztt.base.shiro.spring.SpringUtils"/>
 
     <import resource="classpath:spring-config-cache.xml"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TAdminLoginHisMapper" >
+<mapper namespace="com.org.oztt.dao.TAdminLoginHisDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TAdminLoginHis" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="adminNo" property="adminno" jdbcType="VARCHAR" />
@@ -8,33 +8,13 @@
     <result column="logoutTimestamp" property="logouttimestamp" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.adminno != null" >
-         and adminNo = #{condition.adminno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.logintimestamp != null" >
-         and loginTimestamp = #{condition.logintimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.logouttimestamp != null" >
-         and logoutTimestamp = #{condition.logouttimestamp,jdbcType=TIMESTAMP}
-      </if>
-    </trim>
+    no, adminNo, loginTimestamp, logoutTimestamp
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_admin_login_his
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.adminno != null" >
-         and adminNo = #{example.condition.adminno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.logintimestamp != null" >
-         and loginTimestamp = #{example.condition.logintimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.logouttimestamp != null" >
-         and logoutTimestamp = #{example.condition.logouttimestamp,jdbcType=TIMESTAMP}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_admin_login_his

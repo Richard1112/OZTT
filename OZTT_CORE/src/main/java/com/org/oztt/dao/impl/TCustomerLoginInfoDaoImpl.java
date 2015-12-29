@@ -21,7 +21,7 @@ public class TCustomerLoginInfoDaoImpl extends BaseDao implements
 	}
 
 	public int insertSelective(TCustomerLoginInfo record) {
-		return insert("com.org.oztt.dao.TCustomerLoginInfoMapper.insertSelective", record);
+		return insert("com.org.oztt.dao.TCustomerLoginInfoDao.insertSelective", record);
 	}
 
 	public TCustomerLoginInfo selectByPrimaryKey(Long no) {
@@ -35,19 +35,19 @@ public class TCustomerLoginInfoDaoImpl extends BaseDao implements
 	}
 
 	public int updateByPrimaryKey(TCustomerLoginInfo record) {
-		return update("com.org.oztt.dao.TCustomerLoginInfoMapper.updateByPrimaryKey", record);
+		return update("com.org.oztt.dao.TCustomerLoginInfoDao.updateByPrimaryKey", record);
 	}
 
 	public TCustomerLoginInfo userLogin(TCustomerLoginInfo record) {
-		return selectOne("com.org.oztt.dao.TCustomerLoginInfoMapper.checkLoginSuccess", record);
+		return selectOne("com.org.oztt.dao.TCustomerLoginInfoDao.checkLoginSuccess", record);
 	}
 
 	public TCustomerLoginInfo selectByEmail(String email) {
-		return selectOne("com.org.oztt.dao.TCustomerLoginInfoMapper.selectByEmail", email);
+		return selectOne("com.org.oztt.dao.TCustomerLoginInfoDao.selectByEmail", email);
 	}
 
 	public TCustomerLoginInfo selectByCustomerNo(String customerNo) {
-		return selectOne("com.org.oztt.dao.TCustomerLoginInfoMapper.selectByCustomerNo", customerNo);
+		return selectOne("com.org.oztt.dao.TCustomerLoginInfoDao.selectByCustomerNo", customerNo);
 	}
 	
 	

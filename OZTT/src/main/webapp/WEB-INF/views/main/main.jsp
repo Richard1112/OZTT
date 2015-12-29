@@ -7,6 +7,7 @@
 <head>
   <meta charset="utf-8">
   <title>Main</title>
+  <%@ include file="../commoncssHead.jsp"%>
 </head>
 <!-- Head END -->
 <script>
@@ -415,6 +416,7 @@ Nostrud duis molestie at dolore.</p>
               </div>
             </div>
     </div>
+    <%@ include file="../commonjsFooter.jsp"%>
 </body>
 <!-- END BODY -->
 </html>
