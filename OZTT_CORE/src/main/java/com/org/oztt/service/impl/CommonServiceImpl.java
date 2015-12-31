@@ -5,11 +5,16 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import com.org.oztt.base.common.MyCategroy;
 import com.org.oztt.base.common.MyMap;
 import com.org.oztt.contants.SysCodeConstants;
+import com.org.oztt.dao.TGoodsClassficationDao;
 import com.org.oztt.dao.TSysCodeDao;
+import com.org.oztt.entity.TGoodsClassfication;
 import com.org.oztt.entity.TSysCode;
 import com.org.oztt.service.BaseService;
 import com.org.oztt.service.CommonService;
@@ -20,8 +25,12 @@ public class CommonServiceImpl extends BaseService implements CommonService {
 	private static List<MyMap> sexMapList = null;
 	
 	private static List<MyMap> educationMapList = null;
+	
 	@Resource
 	private TSysCodeDao tSysCodeDao;
+	
+	@Resource
+	private TGoodsClassficationDao tGoodsClassficationDao;
 	
 	public List<MyMap> getSex() throws Exception {
 		if (sexMapList == null) {
@@ -49,6 +58,31 @@ public class CommonServiceImpl extends BaseService implements CommonService {
 			}
 		}
 		return select;
+	}
+	
+	
+	// 将目录分层结构取出
+	private static List<MyCategroy> categoryList = new ArrayList<MyCategroy>();
+	
+	public List<MyCategroy> getMyCategroy() throws Exception {
+		if (CollectionUtils.isEmpty(categoryList)) {
+			List<TGoodsClassfication> faList = tGoodsClassficationDao.getAllFatherkey();
+			if (!CollectionUtils.isEmpty(faList)) {
+				for (TGoodsClassfication fa : faList) {
+					MyCategroy reCa = new MyCategroy();
+					TGoodsClassfication copyDesc = new TGoodsClassfication();
+					BeanUtils.copyProperties(fa, copyDesc);
+					reCa.setFatherClass(copyDesc);
+					// 接着检索出子类信息
+					List<TGoodsClassfication> childrenList = tGoodsClassficationDao.getChildrenKey(fa.getClassid());
+					reCa.setChildrenClass(childrenList);
+					categoryList.add(reCa);
+				}
+			}
+			return categoryList;
+		} else {
+			return categoryList;
+		}
 	}
 
 }

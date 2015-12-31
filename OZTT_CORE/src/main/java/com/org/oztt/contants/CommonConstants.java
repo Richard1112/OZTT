@@ -15,4 +15,6 @@ public final class CommonConstants {
 	public static final String HAS_LOGINED_STATUS = "1"; //已经登录的状态
 	
 	public static final String SESSION_CUSTOMERNO = "sessionCustomerNO"; // 用来保存的用户名
+	
+	public static final String BELONG_FATHER_CLASS = "0000";
 }

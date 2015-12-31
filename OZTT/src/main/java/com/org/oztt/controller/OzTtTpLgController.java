@@ -29,8 +29,14 @@ public class OzTtTpLgController extends BaseController {
 	 */
 	@RequestMapping(value = "init", method = RequestMethod.GET)
 	public String gotoMain(Model model) {
-		model.addAttribute("ozTtTpLgDto", new OzTtTpLgDto());
-		return "/OZ_TT_TP_LG";
+		try {
+			model.addAttribute("ozTtTpLgDto", new OzTtTpLgDto());
+			return "/OZ_TT_TP_LG";
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return CommonConstants.ERROR_PAGE;
+		}
 	}
 	
 	/**

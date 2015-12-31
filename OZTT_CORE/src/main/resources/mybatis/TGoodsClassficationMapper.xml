@@ -161,4 +161,13 @@
       updPgmId = #{updpgmid,jdbcType=VARCHAR}
     where no = #{no,jdbcType=BIGINT}
   </update>
+  
+  <select id="getAllClassByParam" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+	FROM
+		t_goods_classification
+	WHERE
+		fatherClassId = #{fatherClassId,jdbcType=VARCHAR}
+  </select>
 </mapper>
