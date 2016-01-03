@@ -64,25 +64,43 @@ public class CommonServiceImpl extends BaseService implements CommonService {
 	// 将目录分层结构取出
 	private static List<MyCategroy> categoryList = new ArrayList<MyCategroy>();
 	
+	/**
+	 * 获取菜单目录结构
+	 */
 	public List<MyCategroy> getMyCategroy() throws Exception {
 		if (CollectionUtils.isEmpty(categoryList)) {
 			List<TGoodsClassfication> faList = tGoodsClassficationDao.getAllFatherkey();
 			if (!CollectionUtils.isEmpty(faList)) {
 				for (TGoodsClassfication fa : faList) {
-					MyCategroy reCa = new MyCategroy();
-					TGoodsClassfication copyDesc = new TGoodsClassfication();
-					BeanUtils.copyProperties(fa, copyDesc);
-					reCa.setFatherClass(copyDesc);
-					// 接着检索出子类信息
-					List<TGoodsClassfication> childrenList = tGoodsClassficationDao.getChildrenKey(fa.getClassid());
-					reCa.setChildrenClass(childrenList);
-					categoryList.add(reCa);
+					categoryList.add(getNextCategory(fa));
 				}
 			}
 			return categoryList;
 		} else {
 			return categoryList;
 		}
+	}
+	
+	public MyCategroy getNextCategory(TGoodsClassfication classFication) {
+		MyCategroy reCa = new MyCategroy();
+		TGoodsClassfication copyDesc = new TGoodsClassfication();
+		BeanUtils.copyProperties(classFication, copyDesc);
+		reCa.setFatherClass(copyDesc);
+		// 接着检索出子类信息
+		List<TGoodsClassfication> childrenList = tGoodsClassficationDao.getChildrenKey(classFication.getClassid());
+		List<MyCategroy> cList = new ArrayList<MyCategroy>();
+		for (TGoodsClassfication c : childrenList) {
+			MyCategroy ca1Child = new MyCategroy();
+			ca1Child.setFatherClass(c);
+			List<MyCategroy> childClass = getNextCategory(c).getChildrenClass();
+			if (!CollectionUtils.isEmpty(childClass)){
+				ca1Child.setChildrenClass(childClass);
+			}
+			cList.add(ca1Child);
+		}
+		reCa.setChildrenClass(cList);
+		return reCa;
+		
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.org.oztt.dao;
 
+import java.util.List;
+
 import com.org.oztt.entity.TGoods;
 
 public interface TGoodsDao {
@@ -32,4 +34,27 @@ public interface TGoodsDao {
      * 根据主键更新记录
      */
     int updateByPrimaryKey(TGoods record);
+    
+    /**
+     * 根据商品ID获取商品信息
+     */
+    TGoods selectByGoodsId(String goodsId);
+    
+    /**
+     * 根据商品ID获取商品信息
+     */
+    List<TGoods> selectByParams(TGoods record);
+    
+    /**
+     * 获取新货的前三个
+     * @return
+     */
+    List<TGoods> getFirstThreeNewArravail();
+    
+    /**
+     * 获取新货
+     * @return
+     */
+    List<TGoods> getAllNewArravail();
+     
 }

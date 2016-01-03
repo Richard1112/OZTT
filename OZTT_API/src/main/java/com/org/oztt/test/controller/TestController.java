@@ -1,18 +1,12 @@
 package com.org.oztt.test.controller;
 
-import java.util.HashMap;
-
-import javax.annotation.Resource;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.org.oztt.base.constants.Constants;
-import com.org.oztt.base.page.PagingResult;
 import com.org.oztt.base.respond.JsonResponds;
-import com.org.oztt.base.util.MessageUtils;
 import com.org.oztt.test.respondDto.RespondPerson;
 
 /**
@@ -52,7 +46,7 @@ public class TestController extends BaseController{
         }
         catch (Exception ex) {
             log.error("meesage", ex);
-            return new JsonResponds(Constants.RESULT_ERROR, MessageUtils.getText("err.com.sys.err"));
+            return new JsonResponds(Constants.RESULT_ERROR);
         }
     }
 }

@@ -13,7 +13,7 @@ public class MyCategroy {
 
 	private TGoodsClassfication fatherClass;
 	
-	private List<TGoodsClassfication> childrenClass;
+	private List<MyCategroy> childrenClass;
 
 	public TGoodsClassfication getFatherClass() {
 		return fatherClass;
@@ -23,13 +23,21 @@ public class MyCategroy {
 		this.fatherClass = fatherClass;
 	}
 
-	public List<TGoodsClassfication> getChildrenClass() {
+	public List<MyCategroy> getChildrenClass() {
 		return childrenClass;
 	}
 
-	public void setChildrenClass(List<TGoodsClassfication> childrenClass) {
+	public void setChildrenClass(List<MyCategroy> childrenClass) {
 		this.childrenClass = childrenClass;
 	}
+	
+	public MyCategroy() {
+	}
+	
+	public MyCategroy(TGoodsClassfication classfication) {
+		this.fatherClass = classfication;
+	}
+
 	
 	
 }
