@@ -9,11 +9,16 @@
   <meta charset="utf-8">
   <title>Main</title>
   <%@ include file="../commoncssHead.jsp"%>
+  <!-- Head END -->
+  <script>
+	function viewProductPopUp(){
+		
+	}
+	
+	
+  </script>
 </head>
-<!-- Head END -->
-<script>
 
-</script>
 
 <!-- Body BEGIN -->
 <body>
@@ -107,13 +112,13 @@
                     <div class="pi-img-wrapper">
                       <img src="${goodNewArr.goodsnormalpic }" class="img-responsive" alt="${goodNewArr.goodsname }">
                       <div>
-                        <a href="${goodNewArr.goodsnormalpic }" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                        <a href="${goodNewArr.goodsnormalpic }" class="btn btn-default fancybox-button"><fmt:message key="common_zoom"/></a>
+                        <a href="#product-pop-up" onclick="viewProductPopUp()" class="btn btn-default fancybox-fast-view"><fmt:message key="common_view"/></a>
                       </div>
                     </div>
                     <h3><a onclick="goToItem('${goodNewArr.goodsid }')">${goodNewArr.goodsname }</a></h3>
                     <div class="pi-price">${goodNewArr.costprice }<fmt:message key="common_yuan"/></div>
-                    <a onclick="addCart('${goodNewArr.goodsid }')" class="btn btn-default add2cart"><fmt:message key="index_addtocart"/></a>
+                    <a onclick="addCart('${goodNewArr.goodsid }')" class="btn btn-default add2cart"><fmt:message key="common_addtocart"/></a>
                   </div>
                 </li>
                 </c:forEach>
@@ -324,7 +329,7 @@ Nostrud duis molestie at dolore.</p>
                     <div class="product-quantity">
                         <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm">
                     </div>
-                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                    <button class="btn btn-primary" type="submit"><fmt:message key="common_addtocart"/></button>
                     <button class="btn btn-default" type="submit">More details</button>
                   </div>
                 </div>
