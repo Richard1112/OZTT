@@ -1,5 +1,7 @@
 package com.org.oztt.dao;
 
+import java.util.List;
+
 import com.org.oztt.entity.TGoodsClassfication;
 
 public interface TGoodsClassficationDao {
@@ -32,4 +34,14 @@ public interface TGoodsClassficationDao {
      * 根据主键更新记录
      */
     int updateByPrimaryKey(TGoodsClassfication record);
+    
+    /**
+     * 取得所有的父分类
+     */
+    List<TGoodsClassfication> getAllFatherkey();
+    
+    /**
+     * 取得指定父类下面的所有子类
+     */
+    List<TGoodsClassfication> getChildrenKey(String fatherId);
 }

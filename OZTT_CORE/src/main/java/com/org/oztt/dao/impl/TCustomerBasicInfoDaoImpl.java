@@ -21,7 +21,7 @@ public class TCustomerBasicInfoDaoImpl extends BaseDao implements
 	}
 
 	public int insertSelective(TCustomerBasicInfo record) {
-		return insert("com.org.oztt.dao.TCustomerBasicInfoMapper.insertSelective", record);
+		return insert("com.org.oztt.dao.TCustomerBasicInfoDao.insertSelective", record);
 	}
 
 	public TCustomerBasicInfo selectByPrimaryKey(Long no) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TConsTransactionMapper" >
+<mapper namespace="com.org.oztt.dao.TConsTransactionDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TConsTransaction" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="transactionNo" property="transactionno" jdbcType="VARCHAR" />
@@ -25,138 +25,16 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    no, transactionNo, customerNo, inOutFlg, accountNo, transactionMethod, transactionType, 
     transactionObject, transactionSerialNo, transactionAmount, transactionStatus, transactionTimestamp, 
     transactionComments, transactionBeforeAmount, transactionAfterAmount, transactionOperator, 
     addTimestamp, addUserKey, updTimestamp, updUserKey, updPgmId
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.transactionno != null" >
-         and transactionNo = #{condition.transactionno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.customerno != null" >
-         and customerNo = #{condition.customerno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.inoutflg != null" >
-         and inOutFlg = #{condition.inoutflg,jdbcType=CHAR}
-      </if>
-      <if test="condition.accountno != null" >
-         and accountNo = #{condition.accountno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.transactionmethod != null" >
-         and transactionMethod = #{condition.transactionmethod,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.transactiontype != null" >
-         and transactionType = #{condition.transactiontype,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.transactionobject != null" >
-         and transactionObject = #{condition.transactionobject,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.transactionserialno != null" >
-         and transactionSerialNo = #{condition.transactionserialno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.transactionamount != null" >
-         and transactionAmount = #{condition.transactionamount,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.transactionstatus != null" >
-         and transactionStatus = #{condition.transactionstatus,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.transactiontimestamp != null" >
-         and transactionTimestamp = #{condition.transactiontimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.transactioncomments != null" >
-         and transactionComments = #{condition.transactioncomments,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.transactionbeforeamount != null" >
-         and transactionBeforeAmount = #{condition.transactionbeforeamount,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.transactionafteramount != null" >
-         and transactionAfterAmount = #{condition.transactionafteramount,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.transactionoperator != null" >
-         and transactionOperator = #{condition.transactionoperator,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.addtimestamp != null" >
-         and addTimestamp = #{condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.adduserkey != null" >
-         and addUserKey = #{condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updtimestamp != null" >
-         and updTimestamp = #{condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.upduserkey != null" >
-         and updUserKey = #{condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updpgmid != null" >
-         and updPgmId = #{condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_cons_transaction
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.transactionno != null" >
-         and transactionNo = #{example.condition.transactionno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.customerno != null" >
-         and customerNo = #{example.condition.customerno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.inoutflg != null" >
-         and inOutFlg = #{example.condition.inoutflg,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.accountno != null" >
-         and accountNo = #{example.condition.accountno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.transactionmethod != null" >
-         and transactionMethod = #{example.condition.transactionmethod,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.transactiontype != null" >
-         and transactionType = #{example.condition.transactiontype,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.transactionobject != null" >
-         and transactionObject = #{example.condition.transactionobject,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.transactionserialno != null" >
-         and transactionSerialNo = #{example.condition.transactionserialno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.transactionamount != null" >
-         and transactionAmount = #{example.condition.transactionamount,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.transactionstatus != null" >
-         and transactionStatus = #{example.condition.transactionstatus,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.transactiontimestamp != null" >
-         and transactionTimestamp = #{example.condition.transactiontimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.transactioncomments != null" >
-         and transactionComments = #{example.condition.transactioncomments,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.transactionbeforeamount != null" >
-         and transactionBeforeAmount = #{example.condition.transactionbeforeamount,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.transactionafteramount != null" >
-         and transactionAfterAmount = #{example.condition.transactionafteramount,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.transactionoperator != null" >
-         and transactionOperator = #{example.condition.transactionoperator,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.addtimestamp != null" >
-         and addTimestamp = #{example.condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.adduserkey != null" >
-         and addUserKey = #{example.condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updtimestamp != null" >
-         and updTimestamp = #{example.condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.upduserkey != null" >
-         and updUserKey = #{example.condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updpgmid != null" >
-         and updPgmId = #{example.condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_cons_transaction

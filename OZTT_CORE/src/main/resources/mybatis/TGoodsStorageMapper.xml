@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TGoodsStorageMapper" >
+<mapper namespace="com.org.oztt.dao.TGoodsStorageDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TGoodsStorage" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="goodsId" property="goodsid" jdbcType="VARCHAR" />
@@ -18,94 +18,14 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    no, goodsId, groupPrice, groupMaxQuantity, groupCurrentQuantity, checkinPrice, checkinTimestamp, 
     checkinPerson, checkinFlg, addTimestamp, addUserKey, updTimestamp, updUserKey, updPgmId
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.goodsid != null" >
-         and goodsId = #{condition.goodsid,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.groupprice != null" >
-         and groupPrice = #{condition.groupprice,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.groupmaxquantity != null" >
-         and groupMaxQuantity = #{condition.groupmaxquantity,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.groupcurrentquantity != null" >
-         and groupCurrentQuantity = #{condition.groupcurrentquantity,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.checkinprice != null" >
-         and checkinPrice = #{condition.checkinprice,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.checkintimestamp != null" >
-         and checkinTimestamp = #{condition.checkintimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.checkinperson != null" >
-         and checkinPerson = #{condition.checkinperson,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.checkinflg != null" >
-         and checkinFlg = #{condition.checkinflg,jdbcType=CHAR}
-      </if>
-      <if test="condition.addtimestamp != null" >
-         and addTimestamp = #{condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.adduserkey != null" >
-         and addUserKey = #{condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updtimestamp != null" >
-         and updTimestamp = #{condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.upduserkey != null" >
-         and updUserKey = #{condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updpgmid != null" >
-         and updPgmId = #{condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_goods_storage
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.goodsid != null" >
-         and goodsId = #{example.condition.goodsid,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.groupprice != null" >
-         and groupPrice = #{example.condition.groupprice,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.groupmaxquantity != null" >
-         and groupMaxQuantity = #{example.condition.groupmaxquantity,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.groupcurrentquantity != null" >
-         and groupCurrentQuantity = #{example.condition.groupcurrentquantity,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.checkinprice != null" >
-         and checkinPrice = #{example.condition.checkinprice,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.checkintimestamp != null" >
-         and checkinTimestamp = #{example.condition.checkintimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.checkinperson != null" >
-         and checkinPerson = #{example.condition.checkinperson,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.checkinflg != null" >
-         and checkinFlg = #{example.condition.checkinflg,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.addtimestamp != null" >
-         and addTimestamp = #{example.condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.adduserkey != null" >
-         and addUserKey = #{example.condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updtimestamp != null" >
-         and updTimestamp = #{example.condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.upduserkey != null" >
-         and updUserKey = #{example.condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updpgmid != null" >
-         and updPgmId = #{example.condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_goods_storage

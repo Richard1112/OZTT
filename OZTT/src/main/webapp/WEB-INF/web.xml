@@ -50,6 +50,15 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>com.org.oztt.base.util.FileUpload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/servlet/Upload</url-pattern>
+	</servlet-mapping>
+	
 	<!--start 静态资源不进行过滤 -->
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>

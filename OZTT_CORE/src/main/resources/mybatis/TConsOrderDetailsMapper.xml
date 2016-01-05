@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TConsOrderDetailsMapper" >
+<mapper namespace="com.org.oztt.dao.TConsOrderDetailsDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TConsOrderDetails" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="orderNo" property="orderno" jdbcType="VARCHAR" />
@@ -20,107 +20,15 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    no, orderNo, customerNo, goodsId, groupMaxQuantity, groupCurrentQuantity, groupComments, 
     groupDesc, priceNo, unitPrice, sumAmount, addTimestamp, addUserKey, updTimestamp, 
     updUserKey, updPgmId
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.orderno != null" >
-         and orderNo = #{condition.orderno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.customerno != null" >
-         and customerNo = #{condition.customerno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.goodsid != null" >
-         and goodsId = #{condition.goodsid,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.groupmaxquantity != null" >
-         and groupMaxQuantity = #{condition.groupmaxquantity,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.groupcurrentquantity != null" >
-         and groupCurrentQuantity = #{condition.groupcurrentquantity,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.groupcomments != null" >
-         and groupComments = #{condition.groupcomments,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.groupdesc != null" >
-         and groupDesc = #{condition.groupdesc,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.priceno != null" >
-         and priceNo = #{condition.priceno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.unitprice != null" >
-         and unitPrice = #{condition.unitprice,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.sumamount != null" >
-         and sumAmount = #{condition.sumamount,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.addtimestamp != null" >
-         and addTimestamp = #{condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.adduserkey != null" >
-         and addUserKey = #{condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updtimestamp != null" >
-         and updTimestamp = #{condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.upduserkey != null" >
-         and updUserKey = #{condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updpgmid != null" >
-         and updPgmId = #{condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_cons_order_details
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.orderno != null" >
-         and orderNo = #{example.condition.orderno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.customerno != null" >
-         and customerNo = #{example.condition.customerno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.goodsid != null" >
-         and goodsId = #{example.condition.goodsid,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.groupmaxquantity != null" >
-         and groupMaxQuantity = #{example.condition.groupmaxquantity,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.groupcurrentquantity != null" >
-         and groupCurrentQuantity = #{example.condition.groupcurrentquantity,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.groupcomments != null" >
-         and groupComments = #{example.condition.groupcomments,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.groupdesc != null" >
-         and groupDesc = #{example.condition.groupdesc,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.priceno != null" >
-         and priceNo = #{example.condition.priceno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.unitprice != null" >
-         and unitPrice = #{example.condition.unitprice,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.sumamount != null" >
-         and sumAmount = #{example.condition.sumamount,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.addtimestamp != null" >
-         and addTimestamp = #{example.condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.adduserkey != null" >
-         and addUserKey = #{example.condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updtimestamp != null" >
-         and updTimestamp = #{example.condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.upduserkey != null" >
-         and updUserKey = #{example.condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updpgmid != null" >
-         and updPgmId = #{example.condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_cons_order_details

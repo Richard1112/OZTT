@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TGoodsAppendItemsMapper" >
+<mapper namespace="com.org.oztt.dao.TGoodsAppendItemsDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TGoodsAppendItems" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="itemId" property="itemid" jdbcType="VARCHAR" />
@@ -22,119 +22,15 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    no, itemId, classId, displayName, fieldName, fieldType, fieldLength, inputType, defaultValue, 
     isRequired, sortOrder, openFlg, buyUseFlg, addTimestamp, addUserKey, updTimestamp, 
     updUserKey, updPgmId
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.itemid != null" >
-         and itemId = #{condition.itemid,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.classid != null" >
-         and classId = #{condition.classid,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.displayname != null" >
-         and displayName = #{condition.displayname,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.fieldname != null" >
-         and fieldName = #{condition.fieldname,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.fieldtype != null" >
-         and fieldType = #{condition.fieldtype,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.fieldlength != null" >
-         and fieldLength = #{condition.fieldlength,jdbcType=INTEGER}
-      </if>
-      <if test="condition.inputtype != null" >
-         and inputType = #{condition.inputtype,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.defaultvalue != null" >
-         and defaultValue = #{condition.defaultvalue,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.isrequired != null" >
-         and isRequired = #{condition.isrequired,jdbcType=CHAR}
-      </if>
-      <if test="condition.sortorder != null" >
-         and sortOrder = #{condition.sortorder,jdbcType=INTEGER}
-      </if>
-      <if test="condition.openflg != null" >
-         and openFlg = #{condition.openflg,jdbcType=CHAR}
-      </if>
-      <if test="condition.buyuseflg != null" >
-         and buyUseFlg = #{condition.buyuseflg,jdbcType=CHAR}
-      </if>
-      <if test="condition.addtimestamp != null" >
-         and addTimestamp = #{condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.adduserkey != null" >
-         and addUserKey = #{condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updtimestamp != null" >
-         and updTimestamp = #{condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.upduserkey != null" >
-         and updUserKey = #{condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updpgmid != null" >
-         and updPgmId = #{condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_goods_append_items
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.itemid != null" >
-         and itemId = #{example.condition.itemid,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.classid != null" >
-         and classId = #{example.condition.classid,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.displayname != null" >
-         and displayName = #{example.condition.displayname,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.fieldname != null" >
-         and fieldName = #{example.condition.fieldname,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.fieldtype != null" >
-         and fieldType = #{example.condition.fieldtype,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.fieldlength != null" >
-         and fieldLength = #{example.condition.fieldlength,jdbcType=INTEGER}
-      </if>
-      <if test="example.condition.inputtype != null" >
-         and inputType = #{example.condition.inputtype,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.defaultvalue != null" >
-         and defaultValue = #{example.condition.defaultvalue,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.isrequired != null" >
-         and isRequired = #{example.condition.isrequired,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.sortorder != null" >
-         and sortOrder = #{example.condition.sortorder,jdbcType=INTEGER}
-      </if>
-      <if test="example.condition.openflg != null" >
-         and openFlg = #{example.condition.openflg,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.buyuseflg != null" >
-         and buyUseFlg = #{example.condition.buyuseflg,jdbcType=CHAR}
-      </if>
-      <if test="example.condition.addtimestamp != null" >
-         and addTimestamp = #{example.condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.adduserkey != null" >
-         and addUserKey = #{example.condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updtimestamp != null" >
-         and updTimestamp = #{example.condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.upduserkey != null" >
-         and updUserKey = #{example.condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updpgmid != null" >
-         and updPgmId = #{example.condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_goods_append_items

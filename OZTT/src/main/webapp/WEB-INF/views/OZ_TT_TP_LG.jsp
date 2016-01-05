@@ -38,7 +38,7 @@
 									role="form" id="ozTtTpLgDto" modelAttribute="ozTtTpLgDto" name="ozTtTpLgDto"
 									commandName="ozTtTpLgDto">
 									<div class="form-group">
-										<label for="email" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_LG_email"/>
+										<label for="email" class="col-lg-3 control-label"><fmt:message key="OZ_TT_TP_LG_email"/>
 											<span class="require">*</span>
 										</label>
 										<div class="col-lg-8">
@@ -47,7 +47,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="password" class="col-lg-4 control-label"><fmt:message key="OZ_TT_TP_LG_password"/>
+										<label for="password" class="col-lg-3 control-label"><fmt:message key="OZ_TT_TP_LG_password"/>
 											<span class="require">*</span>
 										</label>
 										<div class="col-lg-8">
@@ -56,8 +56,8 @@
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-lg-8 col-md-offset-4 padding-left-0">
-											<a href="forgotton-password.html"><fmt:message key="OZ_TT_TP_LG_fp"/></a>
+										<div class="col-lg-8 col-md-offset-3 padding-left-0">
+											<a onclick="toForgetPw()"><fmt:message key="OZ_TT_TP_LG_fp"/></a>
 										</div>
 									</div>
 									<div class="row">
@@ -67,6 +67,8 @@
 												onclick="login()"><fmt:message key="OZ_TT_TP_LG_btlogin"/></button>
 										</div>
 									</div>
+									
+									<input type="hidden" value="${cannotLogin }" id="cannotLogin"/>
 								</form:form>
 							</div>
 						</div>
@@ -80,17 +82,47 @@
 
 	<%@ include file="./commonjsFooter.jsp"%>
 	<script type="text/javascript">
+	var E0001 = '<fmt:message key="E0001" />';
+	var E0002 = '<fmt:message key="E0002" />';
 	function login() {
+		if (!validateForm()) return;
 		var targetForm = document.forms['ozTtTpLgDto'];
 		targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_LG/login";
 		targetForm.method = "POST";
 		targetForm.submit();
+	}
+	
+	function toForgetPw(){
+		location.href = "${pageContext.request.contextPath}/OZ_TT_TP_FP/init";
+	}
+	
+	function validateForm(){
+		cleanFormError();
+		var email = $("#email").val();
+		var password = $("#password").val();
+		if (email == "") {
+			var message = E0002.replace("{0}", '<fmt:message key="OZ_TT_TP_LG_email" />')
+			showErrorSpan($("#email"), message);
+			return false;
+		}
+		if (password == "") {
+			var message = E0002.replace("{0}", '<fmt:message key="OZ_TT_TP_LG_password" />')
+			showErrorSpan($("#password"), message);
+			return false;
+		}
+		return true;
 	}
 
 	//这里重新加载画面的高度
 	var viewHeight = window.screen.height ;
 	var offTop = $("#mainDiv").offset().top;
 	$("#mainDiv").height(viewHeight - offTop - 62);
+	
+	var loginStatus = $("#cannotLogin").val();
+	if ("1" == loginStatus) {
+		// 登录出错
+		showErrorSpan($("#email"), E0001);
+	}
 </script>
 </body>
 <!-- END BODY -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TSysAccountMapper" >
+<mapper namespace="com.org.oztt.dao.TSysAccountDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TSysAccount" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="accountNo" property="accountno" jdbcType="VARCHAR" />
@@ -13,64 +13,14 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    no, accountNo, accountType, accountBalance, addTimestamp, addUserKey, updTimestamp, 
     updUserKey, updPgmId
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="condition.accountno != null" >
-         and accountNo = #{condition.accountno,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.accounttype != null" >
-         and accountType = #{condition.accounttype,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.accountbalance != null" >
-         and accountBalance = #{condition.accountbalance,jdbcType=DECIMAL}
-      </if>
-      <if test="condition.addtimestamp != null" >
-         and addTimestamp = #{condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.adduserkey != null" >
-         and addUserKey = #{condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updtimestamp != null" >
-         and updTimestamp = #{condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="condition.upduserkey != null" >
-         and updUserKey = #{condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="condition.updpgmid != null" >
-         and updPgmId = #{condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
     <include refid="Base_Column_List" />
     from t_sys_account
     where no = #{no,jdbcType=BIGINT}
-    <trim prefix="where" prefixOverrides="and|or" >
-      <if test="example.condition.accountno != null" >
-         and accountNo = #{example.condition.accountno,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.accounttype != null" >
-         and accountType = #{example.condition.accounttype,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.accountbalance != null" >
-         and accountBalance = #{example.condition.accountbalance,jdbcType=DECIMAL}
-      </if>
-      <if test="example.condition.addtimestamp != null" >
-         and addTimestamp = #{example.condition.addtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.adduserkey != null" >
-         and addUserKey = #{example.condition.adduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updtimestamp != null" >
-         and updTimestamp = #{example.condition.updtimestamp,jdbcType=TIMESTAMP}
-      </if>
-      <if test="example.condition.upduserkey != null" >
-         and updUserKey = #{example.condition.upduserkey,jdbcType=VARCHAR}
-      </if>
-      <if test="example.condition.updpgmid != null" >
-         and updPgmId = #{example.condition.updpgmid,jdbcType=VARCHAR}
-      </if>
-    </trim>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_sys_account

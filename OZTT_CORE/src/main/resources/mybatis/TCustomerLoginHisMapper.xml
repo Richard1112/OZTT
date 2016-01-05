@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.oztt.dao.TCustomerLoginHisMapper" >
+<mapper namespace="com.org.oztt.dao.TCustomerLoginHisDao" >
   <resultMap id="BaseResultMap" type="com.org.oztt.entity.TCustomerLoginHis" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="customerNo" property="customerno" jdbcType="VARCHAR" />

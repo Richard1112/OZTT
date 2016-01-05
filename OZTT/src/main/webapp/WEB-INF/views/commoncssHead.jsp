@@ -22,7 +22,7 @@
   <!-- Global styles START -->          
   <link href="<c:url value='/assets/plugins/font-awesome/css/font-awesome.min.css' />" rel="stylesheet" type="text/css">
   <link href="<c:url value='/assets/plugins/bootstrap/css/bootstrap.css' />" rel="stylesheet" type="text/css">
-  <!-- Global styles END --> 
+  <!-- Global styles END  -->
    
   <!-- Page level plugin styles START -->
   <link href="<c:url value='/assets/plugins/fancybox/source/jquery.fancybox.css' />" rel="stylesheet">              
@@ -35,4 +35,8 @@
   <link href="<c:url value='/assets/css/style.css' />" rel="stylesheet" type="text/css">
   <link href="<c:url value='/assets/css/style-responsive.css' />" rel="stylesheet" type="text/css">  
   <link href="<c:url value='/assets/css/custom.css' />" rel="stylesheet" type="text/css">
+  <link href="<c:url value='/css/bootstrap-datepicker.css' />" rel="stylesheet" type="text/css">
+  <link href="<c:url value='/css/user-common.css' />" rel="stylesheet" type="text/css">
+  <link href="<c:url value='/css/my-common.css' />" rel="stylesheet" type="text/css">
+  
   <!-- Theme styles END -->

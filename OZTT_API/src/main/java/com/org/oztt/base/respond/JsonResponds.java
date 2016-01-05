@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.org.oztt.base.exception.APIException;
-import com.org.oztt.base.util.MessageUtils;
 
 /**
  * @ClassName: JsonResp
@@ -53,10 +52,10 @@ public class JsonResponds {
     private String setExMsg(Exception ex) {
         String msg = "";
         if (ex instanceof APIException) {
-            msg = MessageUtils.getText("err.com.sys.maintenance");
+//            msg = MessageUtils.getText("err.com.sys.maintenance");
         } 
         else {
-            msg = MessageUtils.getText("err.com.sys.err");
+//            msg = MessageUtils.getText("err.com.sys.err");
         }
         return msg;
     }

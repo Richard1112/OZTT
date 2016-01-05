@@ -251,11 +251,7 @@ textarea.form-control:focus {
 	zoom: 1;
 }
 .clear {
-	clear: both; 
-	height: 0; 
-	font-size: 0; 
-	line-height: 0; 
-	overflow: hidden;
+	
 }
 
 .lead {

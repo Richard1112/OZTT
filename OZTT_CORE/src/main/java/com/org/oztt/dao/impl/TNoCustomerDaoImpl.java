@@ -15,11 +15,11 @@ public class TNoCustomerDaoImpl extends BaseDao implements TNoCustomerDao {
 	}
 
 	public int insert(TNoCustomer record) {
-		return insert("com.org.oztt.dao.TNoCustomerMapper.insert", record);
+		return insert("com.org.oztt.dao.TNoCustomerDao.insert", record);
 	}
 
 	public int insertSelective(TNoCustomer record) {
-		return insert("com.org.oztt.dao.TNoCustomerMapper.insertSelective", record);
+		return insert("com.org.oztt.dao.TNoCustomerDao.insertSelective", record);
 	}
 
 	public TNoCustomer selectByPrimaryKey(Long no) {
@@ -38,7 +38,7 @@ public class TNoCustomerDaoImpl extends BaseDao implements TNoCustomerDao {
 	}
 
 	public String getMaxCustomerNo() {
-		return selectOne("com.org.oztt.dao.TNoCustomerMapper.selectMaxCustomerNo", null);
+		return selectOne("com.org.oztt.dao.TNoCustomerDao.selectMaxCustomerNo", null);
 	}
 
 }

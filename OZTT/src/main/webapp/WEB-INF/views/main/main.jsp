@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Main</title>
+  <%@ include file="../commoncssHead.jsp"%>
 </head>
 <!-- Head END -->
 <script>
@@ -96,109 +98,25 @@
         <div class="row margin-bottom-40">
           <!-- BEGIN SALE PRODUCT -->
           <div class="col-md-12 sale-product">
-            <h2>New Arrivals</h2>
+            <h2><fmt:message key="main_newArrivals"/></h2>
             <div class="bxslider-wrapper">
               <ul class="bxslider" data-slides-phone="1" data-slides-tablet="2" data-slides-desktop="5" data-slide-margin="15">
+                <c:forEach var="goodNewArr" items="${ allGoodsList }">
                 <li>
                   <div class="product-item">
                     <div class="pi-img-wrapper">
-                      <img src="<c:url value='/assets/temp/products/model1.jpg' />" class="img-responsive" alt="Berry Lace Dress">
+                      <img src="${goodNewArr.goodsnormalpic }" class="img-responsive" alt="${goodNewArr.goodsname }">
                       <div>
-                        <a href="<c:url value='/assets/temp/products/model1.jpg' />" class="btn btn-default fancybox-button">Zoom</a>
+                        <a href="${goodNewArr.goodsnormalpic }" class="btn btn-default fancybox-button">Zoom</a>
                         <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
                       </div>
                     </div>
-                    <h3><a href="item.html">Berry Lace Dress</a></h3>
-                    <div class="pi-price">$29.00</div>
-                    <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                    <div class="sticker sticker-sale"></div>
+                    <h3><a onclick="goToItem('${goodNewArr.goodsid }')">${goodNewArr.goodsname }</a></h3>
+                    <div class="pi-price">${goodNewArr.costprice }<fmt:message key="common_yuan"/></div>
+                    <a onclick="addCart('${goodNewArr.goodsid }')" class="btn btn-default add2cart"><fmt:message key="index_addtocart"/></a>
                   </div>
                 </li>
-                <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="<c:url value='/assets/temp/products/model2.jpg' />" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="<c:url value='/assets/temp/products/model2.jpg' />" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="item.html">Berry Lace Dress2</a></h3>
-                    <div class="pi-price">$29.00</div>
-                    <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="<c:url value='/assets/temp/products/model6.jpg' />" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="<c:url value='/assets/temp/products/model6.jpg' />" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="item.html">Berry Lace Dress2</a></h3>
-                    <div class="pi-price">$29.00</div>
-                    <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="<c:url value='/assets/temp/products/model4.jpg' />" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="<c:url value='/assets/temp/products/model4.jpg' />" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="#">Berry Lace Dress4</a></h3>
-                    <div class="pi-price">$29.00</div>
-                    <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                    <div class="sticker sticker-new"></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="<c:url value='/assets/temp/products/model5.jpg' />" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="<c:url value='/assets/temp/products/model5.jpg' />" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="item.html">Berry Lace Dress5</a></h3>
-                    <div class="pi-price">$29.00</div>
-                    <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="<c:url value='/assets/temp/products/model3.jpg' />" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="<c:url value='/assets/temp/products/model3.jpg' />" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="item.html">Berry Lace Dress3</a></h3>
-                    <div class="pi-price">$29.00</div>
-                    <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="<c:url value='/assets/temp/products/model7.jpg' />" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="<c:url value='/assets/temp/products/model7.jpg' />" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="item.html">Berry Lace Dress3</a></h3>
-                    <div class="pi-price">$29.00</div>
-                    <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                  </div>
-                </li>
+                </c:forEach>
               </ul>
             </div>
           </div>
@@ -415,6 +333,7 @@ Nostrud duis molestie at dolore.</p>
               </div>
             </div>
     </div>
+    <%@ include file="../commonjsFooter.jsp"%>
 </body>
 <!-- END BODY -->
 </html>

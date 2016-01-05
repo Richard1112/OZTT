@@ -64,11 +64,31 @@
    <%@ include file="./commonjsFooter.jsp"%>
    
    <script type="text/javascript">
+   	var E0002 = '<fmt:message key="E0002" />';
+   	var E0003 = '<fmt:message key="E0003" />';
 	function sendMail() {
+		if (!validateForm()) return;
 		var targetForm = document.forms['ozTtTpFpDto'];
 		targetForm.action = "${pageContext.request.contextPath}/OZ_TT_TP_FP/sendMail";
 		targetForm.method = "POST";
 		targetForm.submit();
+	}
+	
+	function validateForm(){
+		cleanFormError();
+		var email = $("#email").val();
+		if (email == "") {
+			var message = E0002.replace("{0}", '<fmt:message key="OZ_TT_TP_FP_email" />')
+			showErrorSpan($("#email"), message);
+			return false;
+		}
+		if (!checkEmail(email)) {
+			var message = E0003.replace("{0}", '<fmt:message key="OZ_TT_TP_FP_email" />')
+			showErrorSpan($("#email"), message);
+			return false;
+		}
+		
+		return true;
 	}
 
 	//这里重新加载画面的高度

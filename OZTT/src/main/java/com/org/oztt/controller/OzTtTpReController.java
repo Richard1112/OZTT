@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.org.oztt.base.util.DateFormatUtils;
 import com.org.oztt.contants.CommonConstants;
 import com.org.oztt.formDto.OzTtTpReDto;
 import com.org.oztt.service.CustomerService;
@@ -31,12 +32,20 @@ public class OzTtTpReController extends BaseController {
 		return "/OZ_TT_TP_RE";
 	}
 	
+	/**
+	 * 用户的注册
+	 * @param model
+	 * @param request
+	 * @param session
+	 * @param ozTtTpReDto
+	 * @return
+	 */
 	@RequestMapping("register")
 	public String login(Model model, HttpServletRequest request, HttpSession session, @ModelAttribute OzTtTpReDto ozTtTpReDto) {
 		try{
-			
+			ozTtTpReDto.setBirthday(DateFormatUtils.strToYYYYMMDDNoCa(ozTtTpReDto.getBirthday()));
 			customerService.insertRegister(ozTtTpReDto);
-			return "";
+			return "redirect:/OZ_TT_TP_LG/init";
 		}catch(Exception e){
 			e.printStackTrace();
 			logger.error(e.getMessage());
